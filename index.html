@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <script src="ui.js" defer></script>
 
 
     <title>Document</title>
@@ -24,8 +25,14 @@
                 <a href="nvprojet.html"><li class=" shadow-sm shadow-gray-500 rounded-[10px] p-2.5 font-bold">Nouveau projet</li></a>
             </ul>
         </nav>
-        <button class="rounded-[10px] shadow-sm shadow-gray-500 p-2.5 font-bold">ai
+        <button id="opbtnaiparameter" class="rounded-[10px] shadow-sm shadow-gray-500 p-2.5 font-bold">ai
             parametres</button>
+            <dialog id="model" class="backdrop-blur-2xl">
+                <div class="flex ">
+                    <p class="p-1 text-red-600 font-bold " id="clbtnaiparameter">X</p>
+
+                </div>
+            </dialog>
     </header>
     <main class="p-6  flex flex-col h-full ">
         <div class="hero flex justify-between">
