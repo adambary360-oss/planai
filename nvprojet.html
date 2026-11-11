@@ -17,20 +17,38 @@
 <body class="bg-blue-100 h-screen ">
     <header class="flex flex-row justify-around p-3 items-center shadow-sm shadow-gray-500 bg-white rounded-2xl m-3">
         <div><span class="text-blue-950 font-black text-4xl font-Instrument ">PLANIT <span
-                    class="text-blue-800 ">AI</span></span></div>
+                    class="text-blue-800">AI</span></span></div>
         <nav class="navbar flex flex-row ">
             <ul class="list flex flex-row gap-2">
-                <li class="shadow-sm shadow-gray-500 rounded-[10px] p-2.5 font-bold "><a href="index.html">dashboard</a>
-                </li>
-                <li class="shadow-sm shadow-gray-500 rounded-[10px] p-2.5 font-bold bg-blue-950 text-white"><a
-                        href="">Nouveau projet</a></li>
+                <a href="index.html">
+                    <li class=" shadow-sm shadow-gray-500 rounded-[10px] p-2.5 font-bold ">
+                        dashboard</li>
+                </a>
+                <a href="nvprojet.html">
+                    <li class=" bg-blue-950 shadow-sm shadow-gray-500 rounded-[10px] p-2.5 font-bold text-white">Nouveau projet</li>
+                </a>
             </ul>
         </nav>
-        <button class="rounded-[10px] shadow-sm shadow-gray-500 p-2.5 font-bold">ai
+        <button id="opbtnaiparameter" class="rounded-[10px] shadow-sm shadow-gray-500 p-2.5 font-bold">ai
             parametres</button>
-
+        <dialog id="model" class="[&::backdrop]:backdrop-blur-sm rounded-2xl p-4 shadow-2xl ">
+            <div class="flex flex-col gap-5">
+            <p class="text-2xl font-bold">CONFIGURATION / APERÇU</p>
+            <p class="text-xl font-bold">Clé API · aperçu masqué</p>
+            <div class="flex gap-2">
+            <input type="password" placeholder="votre cle API" class="p-3 rounded-[10px] border-2 w-full border-gray-300">
+                <p class="rounded-[10px] bg shadow-sm shadow-gray-500 p-2.5 w-1/3 text-center font-bold cursor-pointer" id="btntextcle">teste la cle</p>
+            </div>
+                <p class="text-gray-400">Votre clé API est stockée uniquement pendant cette session.</p>
+            
+            <div class="flex flex-row justify-around">
+                <p class="rounded-[10px] bg-red-400 shadow-sm shadow-gray-500 p-2.5 w-1/3 text-center font-bold cursor-pointer" id="clbtnaiparameter">close</p>
+                <button class="rounded-[10px] bg shadow-sm shadow-gray-500 p-2.5 w-1/3 font-bold" >Mode démo</button>
+            </div>
+            </div>
+        </dialog>
     </header>
-    <main class="p-6 flex flex-col h-full ">
+    <main class="flex p-3 flex-col h-screen ">
         <!-- hero -->
         <div class="flex flex-col p-3">
             <p class="text-xl text-gray-500 font-bold">NOUVEAU PROJET / BRIEF</p>
@@ -38,8 +56,8 @@
             <p class="text-gray-500 font-bold">Définissez le cadre de votre projet pour prévisualiser la génération.</p>
         </div>
         <!-- form -->
-         <div class="flex flex-row gap-2">
-        <section class=" h-full w-full bg-white rounded-2xl p-3 ">
+         <div class=" px-28 grid grid-cols-3 gap-2">
+        <section class=" h-full w-full bg-white rounded-2xl p-3 col-span-2 shadow-2xl ">
 
             <div class="formuler flex flex-col gap-3">
                 <p class="text-black text-3xl font-bold">Informations du projet</p>
@@ -70,8 +88,11 @@
                 <button class="rounded-[10px] shadow-sm shadow-gray-500 p-2.5 font-bold bg-[#5545E6] text-white "> ✨​Générer le plan de développement</button>
             </div>
         </section>
-        <section class=" h-1/2 w-full bg-white rounded-2xl p-3 ">
+        <section class="w-full bg-white rounded-2xl p-3 col-span-1 shadow-2xl ">
             <p class="text-2xl font-bold">États du processus</p>
+            <div>
+
+            </div>
         </section>
         </div>
     </main>

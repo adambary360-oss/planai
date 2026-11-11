@@ -17,38 +17,59 @@
 
 <body class="bg-blue-100 h-screen ">
     <header class="flex flex-row justify-around p-3 items-center shadow-sm shadow-gray-500 bg-white rounded-2xl m-3">
-        <div><span class ="text-blue-950 font-black text-4xl font-Instrument ">PLANIT <span
+        <div><span class="text-blue-950 font-black text-4xl font-Instrument ">PLANIT <span
                     class="text-blue-800">AI</span></span></div>
         <nav class="navbar flex flex-row ">
             <ul class="list flex flex-row gap-2">
-                <a href="index.html"><li class="bg-blue-950 shadow-sm shadow-gray-500 rounded-[10px] p-2.5 font-bold text-white">dashboard</li></a>
-                <a href="nvprojet.html"><li class=" shadow-sm shadow-gray-500 rounded-[10px] p-2.5 font-bold">Nouveau projet</li></a>
+                <a href="index.html">
+                    <li class="bg-blue-950 shadow-sm shadow-gray-500 rounded-[10px] p-2.5 font-bold text-white">
+                        dashboard</li>
+                </a>
+                <a href="nvprojet.html">
+                    <li class=" shadow-sm shadow-gray-500 rounded-[10px] p-2.5 font-bold">Nouveau projet</li>
+                </a>
             </ul>
         </nav>
         <button id="opbtnaiparameter" class="rounded-[10px] shadow-sm shadow-gray-500 p-2.5 font-bold">ai
             parametres</button>
-            <dialog id="model" class="backdrop-blur-2xl">
-                <div class="flex ">
-                    <p class="p-1 text-red-600 font-bold " id="clbtnaiparameter">X</p>
-
-                </div>
-            </dialog>
+        <dialog id="model" class="[&::backdrop]:backdrop-blur-sm rounded-2xl p-4 shadow-2xl ">
+            <div class="flex flex-col gap-5">
+            <p class="text-2xl font-bold">CONFIGURATION / APERÇU</p>
+            <p class="text-xl font-bold">Clé API · aperçu masqué</p>
+            <div class="flex gap-2">
+            <input type="password" placeholder="votre cle API" class="p-3 rounded-[10px] border-2 w-full border-gray-300">
+                <p class="rounded-[10px] bg shadow-sm shadow-gray-500 p-2.5 w-1/3 text-center font-bold cursor-pointer" id="btntextcle">teste la cle</p>
+            </div>
+                <p class="text-gray-400">Votre clé API est stockée uniquement pendant cette session.</p>
+            
+            <div class="flex flex-row justify-around">
+                <p class="rounded-[10px] bg-red-400 shadow-sm shadow-gray-500 p-2.5 w-1/3 text-center font-bold cursor-pointer" id="clbtnaiparameter">close</p>
+                <button class="rounded-[10px] bg shadow-sm shadow-gray-500 p-2.5 w-1/3 font-bold" >Mode démo</button>
+            </div>
+            </div>
+        </dialog>
     </header>
     <main class="p-6  flex flex-col h-full ">
         <div class="hero flex justify-between">
-        <div class="herotext p-2.5 ">
-            <p class="text-xl text-gray-500 font-bold">ESPACE DE TRAVAIL / VUE D’ENSEMBLE</p>
-            <p class="text-3xl text-black font-bold">Vos projets, en bonne voie.</p>
-            <p class="text-gray-500 font-bold">Un regard clair sur les idées qui prennent forme.</p>
+            <div class="herotext p-2.5 ">
+                <p class="text-xl text-gray-500 font-bold">ESPACE DE TRAVAIL / VUE D’ENSEMBLE</p>
+                <p class="text-3xl text-black font-bold">Vos projets, en bonne voie.</p>
+                <p class="text-gray-500 font-bold">Un regard clair sur les idées qui prennent forme.</p>
+            </div>
+            <a href="nvprojet.html" class="self-end"><button
+                    class="rounded-[10px] shadow-sm shadow-gray-500 p-2.5 font-bold bg-[#5545E6] text-white ">+ creer un
+                    projet </button></a>
         </div>
-        <a href="nvprojet.html" class="self-end"><button class="rounded-[10px] shadow-sm shadow-gray-500 p-2.5 font-bold bg-[#5545E6] text-white ">+ creer un projet </button></a>
-        </div>
-        <div class="w-7xl h-full bg-white flex flex-col justify-center items-center m-5 shadow-sm shadow-gray-500 bg-white rounded-2xl">
+        <div
+            class="w-7xl h-full bg-white flex flex-col justify-center items-center m-5 shadow-sm shadow-gray-500 bg-white rounded-2xl">
             <p class=" text-3xl text-black font-bold">Un nouveau départ pour vos idées</p>
-            <p class="text-gray-500 font-bold">Aucun projet pour le moment, créez-en un pour générer votre premier plan.</p>
-            <a href="nvprojet.html"><button class="rounded-[10px] shadow-sm shadow-gray-500 p-2.5 font-bold bg-[#5545E6] text-white ">Créer mon premier projet</button></a>
+            <p class="text-gray-500 font-bold">Aucun projet pour le moment, créez-en un pour générer votre premier plan.
+            </p>
+            <a href="nvprojet.html"><button
+                    class="rounded-[10px] shadow-sm shadow-gray-500 p-2.5 font-bold bg-[#5545E6] text-white ">Créer mon
+                    premier projet</button></a>
             <div class="formuler flex flex-col">
-            <p class="underline text-gray-400">Revenir aux projets d’exemple</p>
+                <p class="underline text-gray-400">Revenir aux projets d’exemple</p>
             </div>
         </div>
     </main>
