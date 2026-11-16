@@ -1,0 +1,203 @@
+[
+  {
+    "projectName": "Simple Todo List App",
+    "totalEstimatedHours": 27,
+    "tasks": [
+      {
+        "id": "TASK-001",
+        "title": "Initialize repository and project folder structure",
+        "description": "Create the root Git repository, configure .gitignore, and initialize separate frontend and backend directories with package.json files.",
+        "userStories": [
+          "As a developer, I want an organized project repository so that I can manage frontend and backend code cleanly."
+        ],
+        "acceptanceCriteria": [
+          "Git repository is initialized with a valid .gitignore excluding node_modules and database files.",
+          "Both /client and /server folders exist with initialized package.json files."
+        ],
+        "priority": "Critical",
+        "importance": "High",
+        "size": "XS",
+        "estimatedTime": 2,
+        "deadline": "Day 1",
+        "status": "To Do",
+        "dependencies": []
+      },
+      {
+        "id": "TASK-002",
+        "title": "Set up Express server and SQLite database",
+        "description": "Install Express, CORS, and SQLite packages in the backend, configure the server entry point, and create the todos table schema on startup.",
+        "userStories": [
+          "As a developer, I want a working server connected to SQLite so that task data can be stored persistently."
+        ],
+        "acceptanceCriteria": [
+          "Express server starts without errors on the configured port.",
+          "SQLite database file is created automatically with a todos table containing id, title, completed, and created_at columns."
+        ],
+        "priority": "Critical",
+        "importance": "High",
+        "size": "S",
+        "estimatedTime": 4,
+        "deadline": "Day 1",
+        "status": "To Do",
+        "dependencies": [
+          "TASK-001"
+        ]
+      },
+      {
+        "id": "TASK-003",
+        "title": "Implement CRUD REST API endpoints for todos",
+        "description": "Create GET /api/todos, POST /api/todos, PATCH /api/todos/:id, and DELETE /api/todos/:id endpoints with basic input validation and HTTP status codes.",
+        "userStories": [
+          "As a user, I want the backend to support creating, reading, updating, and deleting tasks so that my changes are saved."
+        ],
+        "acceptanceCriteria": [
+          "GET /api/todos returns a JSON array of all saved tasks with HTTP 200.",
+          "POST /api/todos validates a non-empty title, inserts the task, and returns HTTP 201.",
+          "PATCH /api/todos/:id updates the completed status and returns HTTP 200.",
+          "DELETE /api/todos/:id removes the task and returns HTTP 200 or 204."
+        ],
+        "priority": "Critical",
+        "importance": "High",
+        "size": "S",
+        "estimatedTime": 4,
+        "deadline": "Day 2",
+        "status": "To Do",
+        "dependencies": [
+          "TASK-002"
+        ]
+      },
+      {
+        "id": "TASK-004",
+        "title": "Initialize React frontend and API service",
+        "description": "Set up the React application in the client folder and create an API helper module using fetch or axios to communicate with the Express endpoints.",
+        "userStories": [
+          "As a developer, I want a React setup with a dedicated API module so that UI components can interact cleanly with the backend."
+        ],
+        "acceptanceCriteria": [
+          "React development server starts cleanly and renders the root component.",
+          "API service exports functions for getTodos, createTodo, toggleTodo, and deleteTodo."
+        ],
+        "priority": "High",
+        "importance": "High",
+        "size": "XS",
+        "estimatedTime": 2,
+        "deadline": "Day 2",
+        "status": "To Do",
+        "dependencies": [
+          "TASK-001"
+        ]
+      },
+      {
+        "id": "TASK-005",
+        "title": "Build task list view and add-task form",
+        "description": "Create the main Todo components to fetch and display existing tasks on load and allow submitting a new task via an input form.",
+        "userStories": [
+          "As a user, I want to add a new task and see my list of tasks so that I can keep track of what I need to do."
+        ],
+        "acceptanceCriteria": [
+          "Existing tasks from the database render on page load.",
+          "Submitting the form with a valid title creates a task in the database and displays it immediately.",
+          "Empty form submissions are prevented."
+        ],
+        "priority": "Critical",
+        "importance": "High",
+        "size": "S",
+        "estimatedTime": 4,
+        "deadline": "Day 3",
+        "status": "To Do",
+        "dependencies": [
+          "TASK-003",
+          "TASK-004"
+        ]
+      },
+      {
+        "id": "TASK-006",
+        "title": "Implement task completion toggle and delete actions",
+        "description": "Add a checkbox to each task item to toggle its completed status and a delete button to remove the task from the list and database.",
+        "userStories": [
+          "As a user, I want to check off completed tasks and delete unwanted ones so that my list stays up to date."
+        ],
+        "acceptanceCriteria": [
+          "Clicking a task checkbox updates its completed state in the UI and persists across page reloads.",
+          "Clicking the delete button removes the task from the UI and deletes it from SQLite."
+        ],
+        "priority": "High",
+        "importance": "High",
+        "size": "XS",
+        "estimatedTime": 2,
+        "deadline": "Day 3",
+        "status": "To Do",
+        "dependencies": [
+          "TASK-005"
+        ]
+      },
+      {
+        "id": "TASK-007",
+        "title": "Add status filters and clean responsive styling",
+        "description": "Implement All, Active, and Completed filter buttons above the task list and apply clean CSS styling for desktop and mobile viewports.",
+        "userStories": [
+          "As a user, I want to filter tasks by status so that I can focus on remaining tasks."
+        ],
+        "acceptanceCriteria": [
+          "Selecting All, Active, or Completed displays only the matching tasks.",
+          "Completed tasks display a visual strikethrough style.",
+          "Layout remains readable on both mobile and desktop screen sizes."
+        ],
+        "priority": "Medium",
+        "importance": "Medium",
+        "size": "S",
+        "estimatedTime": 3,
+        "deadline": "Day 4",
+        "status": "To Do",
+        "dependencies": [
+          "TASK-006"
+        ]
+      },
+      {
+        "id": "TASK-008",
+        "title": "Write basic API and component tests",
+        "description": "Add automated tests covering the main REST API CRUD routes and basic React rendering of the task list.",
+        "userStories": [
+          "As a developer, I want automated tests for core features so that I can verify everything works reliably."
+        ],
+        "acceptanceCriteria": [
+          "API tests verify creating, listing, toggling, and deleting a todo.",
+          "All configured tests run and pass via npm test."
+        ],
+        "priority": "Medium",
+        "importance": "Medium",
+        "size": "XS",
+        "estimatedTime": 2,
+        "deadline": "Day 4",
+        "status": "To Do",
+        "dependencies": [
+          "TASK-003",
+          "TASK-006"
+        ]
+      },
+      {
+        "id": "TASK-009",
+        "title": "Perform end-to-end QA, production build, and documentation",
+        "description": "Test the complete application flow manually, verify the frontend production build, and write a README with installation and startup instructions.",
+        "userStories": [
+          "As a user or developer, I want clear documentation and a verified build so that I can run the application easily."
+        ],
+        "acceptanceCriteria": [
+          "Frontend builds cleanly with no build errors.",
+          "All user flows pass manual verification against the running backend.",
+          "README.md documents prerequisites, setup steps, and available scripts."
+        ],
+        "priority": "High",
+        "importance": "High",
+        "size": "S",
+        "estimatedTime": 4,
+        "deadline": "Day 5",
+        "status": "To Do",
+        "dependencies": [
+          "TASK-007",
+          "TASK-008"
+        ]
+      }
+    ]
+  }
+]

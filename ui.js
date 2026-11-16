@@ -1,10 +1,6 @@
 const opbtnaiparameter = document.getElementById("opbtnaiparameter")
 const model = document.getElementById("model")
 const clbtnaiparameter = document.getElementById("clbtnaiparameter")
-console.log(clbtnaiparameter);
-
-console.log(model);
-console.log(opbtnaiparameter);
 
 
 

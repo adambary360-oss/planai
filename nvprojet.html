@@ -10,6 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     <script src="ui.js" defer></script>
+    <script src="api.js" defer></script>
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
 
     <title>Document</title>
 </head>
@@ -25,7 +28,8 @@
                         dashboard</li>
                 </a>
                 <a href="nvprojet.html">
-                    <li class=" bg-blue-950 shadow-sm shadow-gray-500 rounded-[10px] p-2.5 font-bold text-white">Nouveau projet</li>
+                    <li class=" bg-blue-950 shadow-sm shadow-gray-500 rounded-[10px] p-2.5 font-bold text-white">Nouveau
+                        projet</li>
                 </a>
             </ul>
         </nav>
@@ -33,18 +37,21 @@
             parametres</button>
         <dialog id="model" class="[&::backdrop]:backdrop-blur-sm rounded-2xl p-4 shadow-2xl ">
             <div class="flex flex-col gap-5">
-            <p class="text-2xl font-bold">CONFIGURATION / APERÇU</p>
-            <p class="text-xl font-bold">Clé API · aperçu masqué</p>
-            <div class="flex gap-2">
-            <input type="password" placeholder="votre cle API" class="p-3 rounded-[10px] border-2 w-full border-gray-300">
-                <p class="rounded-[10px] bg shadow-sm shadow-gray-500 p-2.5 w-1/3 text-center font-bold cursor-pointer" id="btntextcle">teste la cle</p>
-            </div>
+                <p class="text-2xl font-bold">CONFIGURATION / APERÇU</p>
+                <p class="text-xl font-bold">Clé API · aperçu masqué</p>
+                <div class="flex gap-2">
+                    <input type="password" placeholder="votre cle API"
+                        class="p-3 rounded-[10px] border-2 w-full border-gray-300">
+                    <p class="rounded-[10px] bg shadow-sm shadow-gray-500 p-2.5 w-1/3 text-center font-bold cursor-pointer"
+                        id="btntextcle">teste la cle</p>
+                </div>
                 <p class="text-gray-400">Votre clé API est stockée uniquement pendant cette session.</p>
-            
-            <div class="flex flex-row justify-around">
-                <p class="rounded-[10px] bg-red-400 shadow-sm shadow-gray-500 p-2.5 w-1/3 text-center font-bold cursor-pointer" id="clbtnaiparameter">close</p>
-                <button class="rounded-[10px] bg shadow-sm shadow-gray-500 p-2.5 w-1/3 font-bold" >Mode démo</button>
-            </div>
+
+                <div class="flex flex-row justify-around">
+                    <p class="rounded-[10px] bg-red-400 shadow-sm shadow-gray-500 p-2.5 w-1/3 text-center font-bold cursor-pointer"
+                        id="clbtnaiparameter">close</p>
+                    <button class="rounded-[10px] bg shadow-sm shadow-gray-500 p-2.5 w-1/3 font-bold">Mode démo</button>
+                </div>
             </div>
         </dialog>
     </header>
@@ -56,44 +63,57 @@
             <p class="text-gray-500 font-bold">Définissez le cadre de votre projet pour prévisualiser la génération.</p>
         </div>
         <!-- form -->
-         <div class=" px-28 grid grid-cols-3 gap-2">
-        <section class=" h-full w-full bg-white rounded-2xl p-3 col-span-2 shadow-2xl ">
+        <div class=" px-28 grid grid-cols-3 gap-2">
+            <section class=" h-full w-full bg-white rounded-2xl p-3 col-span-2 shadow-2xl ">
 
-            <div class="formuler flex flex-col gap-3">
-                <p class="text-black text-3xl font-bold">Informations du projet</p>
-                <p class="font-bold">Nom du projet *</p>
-                <input type="text" placeholder="Refonte plateforme e-commerce"
-                    class=" border-2 border-gray-200 rounded-2xl p-3">
-                <p class="font-bold">Description *</p>
-                <input type="text" placeholder="Modernisation du parcours d’achat et de l’espace client."
-                    class=" border-2 border-gray-200 rounded-2xl p-3">
-                <p class="font-bold">Brief complet *</p>
-                <textarea name="" id="" class="border-gray-300 border-2 rounded-2xl p-3 h-full w-full resize-none"
-                    placeholder="Repenser la navigation, le catalogue et le paiement ; intégrer des tests utilisateurs et une optimisation mobile."></textarea>
-                <p class="font-bold">Durée (jours) *</p>
-                <input type="number" max="30" min="0"
-                    class="border-gray-300 border-2 rounded-2xl p-3 h-full w-full resize-none" placeholder="30">
-                <p class="font-bold">Nombre de développeurs *</p>
-                <input type="number" max="100" min="0"
-                    class="border-gray-300 border-2 rounded-2xl p-3 h-full w-full resize-none" placeholder="100">
-                <p class="font-bold">Technologies *</p>
-                <input type="text" placeholder="React, Node.js, PostgreSQL"
-                    class=" border-2 border-gray-200 rounded-2xl p-3">
-                <p class="font-bold">Difficulté</p>
-                <details class=" bg-blue-400 rounded-2xl p-3 text-white font-bold "   ><summary class="list-none  rounded-2xl  [&::-webkit-details-marker]:hidden cursor-pointer"> Bigenner</summary><ul>
-                    <li>Bigenner</li>
-                    <li>Intermediate</li>
-                    <li>Advanced</li>
-                </ul></details>
-                <button class="rounded-[10px] shadow-sm shadow-gray-500 p-2.5 font-bold bg-[#5545E6] text-white "> ✨​Générer le plan de développement</button>
-            </div>
-        </section>
-        <section class="w-full bg-white rounded-2xl p-3 col-span-1 shadow-2xl ">
-            <p class="text-2xl font-bold">États du processus</p>
-            <div>
+                <form class="formuler flex flex-col gap-3" id="form" data-parsley-validate>
+                    <p class="text-black text-3xl font-bold">Informations du projet</p>
+                    <p class="font-bold">Nom du projet *</p>
 
-            </div>
-        </section>
+                    <input type="text" placeholder="Refonte plateforme e-commerce" maxlength="25"
+                        class=" border-2 border-gray-200 rounded-2xl p-3">
+
+                    <p class="font-bold">Description *</p>
+
+                    <input type="text" placeholder="Modernisation du parcours d’achat et de l’espace client." maxlength="200" 
+                        class=" border-2 border-gray-200 rounded-2xl p-3">
+
+                    <p class="font-bold">Brief complet *</p>
+
+                    <textarea type="text" id="" class="border-gray-300 border-2 rounded-2xl p-3 h-full w-full resize-none"
+                        placeholder="Repenser la navigation, le catalogue et le paiement ; intégrer des tests utilisateurs et une optimisation mobile."></textarea>
+                    <p class="font-bold">Durée (jours) *</p>
+
+                    <input type="number" max="30" min="0"
+                        class="border-gray-300 border-2 rounded-2xl p-3 h-full w-full resize-none" placeholder="30">
+                    <p class="font-bold">Nombre de développeurs *</p>
+
+                    <input type="number" max="100" min="0"
+                        class="border-gray-300 border-2 rounded-2xl p-3 h-full w-full resize-none" placeholder="100">
+
+                    <p class="font-bold">Technologies *</p>
+
+                    <input type="text" placeholder="React, Node.js, PostgreSQL"
+                        class=" border-2 border-gray-200 rounded-2xl p-3">
+
+                    <p class="font-bold">Difficulté</p>
+                        <select class="text-black [select::picker-icon]:hidden rounded-2xl p-3 ">
+                            <option value="">choise la Difficulté </option>
+                            <option class="text-black" value="Bigenner">Bigenner</option>
+                            <option class="text-black" value="Intermediate">Intermediate</option>
+                            <option class="text-black" value="Advanced">Advanced</option>
+                        </select>
+                        <button type="submit"
+                            class="rounded-[10px] shadow-sm shadow-gray-500 p-2.5 font-bold bg-[#5545E6] text-white ">
+                            ✨​Générer le plan de développement</button>
+                </form>
+            </section>
+            <section class="w-full bg-white rounded-2xl p-3 col-span-1 shadow-2xl ">
+                <p class="text-2xl font-bold">États du processus</p>
+                <div>
+
+                </div>
+            </section>
         </div>
     </main>
 </body>
