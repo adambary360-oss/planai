@@ -1,6 +1,5 @@
 
-import { affichageDachBoerd ,setstocageprojet} from "/affichage.js";
-import { projets } from "/affichage.js";
+import { affichageDachBoerd ,setstocageprojet ,projets} from "/affichage.js";
 
 export async function loedddachboard(url) {
    const response = await fetch(url);
@@ -12,7 +11,7 @@ export async function loedddachboard(url) {
    };
 
    let exists = false
-   for (const projet of projets) {
+   for (let projet of projets) {
       if (projet.projectName === data[0].projectName) {
          exists = true
          break;
@@ -28,7 +27,7 @@ export async function loedddachboard(url) {
 
       affichageDachBoerd(projets)
 
-      setstocageprojet()
+      setstocageprojet(projets)
    }
 
 
