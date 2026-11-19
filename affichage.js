@@ -1,5 +1,6 @@
 import {aiparametermodal} from "/ui.js";
 import {loedddachboard} from "/api.js";
+import { Submitvalidation } from "/form.js";
 
 const btndemo = document.getElementById("btndemo")
 
@@ -9,7 +10,7 @@ btndemo.addEventListener("click", () => {
 })
 
 aiparametermodal()
-
+Submitvalidation()
 
 
 
@@ -61,22 +62,22 @@ export function affichageDachBoerd(data) {
 
 const selectedprojet = JSON.parse(localStorage.getItem("setselectedprojet")) || null
 
+
+const doneblock = document.getElementById("doneblock")
+if(doneblock){
 const todoblock = document.getElementById("todoblock")
 const inprogressblock = document.getElementById("inprogressblock")
-const doneblock = document.getElementById("doneblock")
-if(todoblock){
 const projetname = document.getElementById("projetname")
 const DURÉE = document.getElementById("DURÉE")
 projetname.textContent = selectedprojet.projectName
-DURÉE.textContent = (24/selectedprojet.totalEstimatedHours).toFixed(2)}
+DURÉE.textContent = (24/selectedprojet.totalEstimatedHours).toFixed(2)
 const tasks = selectedprojet.tasks
-
-
-
 tasks.forEach(task => {
    if(task.status === "To Do"){
       const carttask = document.createElement("div")
-      carttask.className = "project-task bg-white p-4 mb-4 border rounded-xl shadow-sm hover:shadow-md transition-shadow"
+      carttask.className = "project-task bg-white p-4 mb-4 border rounded-xl shadow-sm "
+      carttask.setAttribute("draggable","true")
+      carttask.dataset.id = task.id
      carttask.innerHTML = `
      <div class="flex justify-between items-center  mb-2">
             <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-gray-100 text-gray-800">${task.id}</span>
@@ -95,8 +96,10 @@ tasks.forEach(task => {
    }
    else if(task.status === "In Progress"){
             const carttask = document.createElement("div")
-      carttask.className = "project-task bg-white p-4 mb-4 border rounded-xl shadow-sm hover:shadow-md transition-shadow"
-     carttask.innerHTML = `
+      carttask.className = "project-task bg-white p-4 mb-4 border rounded-xl shadow-sm "
+      carttask.setAttribute("draggable","true")
+      carttask.dataset.id = task.id
+      carttask.innerHTML = `
      <div class="flex justify-between items-center  mb-2">
             <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-gray-100 text-gray-800">${task.id}</span>
             <span class="text-xs font-bold px-2 py-1 rounded bg-yellow-100 text-yellow-800">${task.priority}</span>
@@ -116,7 +119,9 @@ tasks.forEach(task => {
    else{
             const carttask = document.createElement("div")
       carttask.className = "project-task bg-white p-4 mb-4 border rounded-xl shadow-sm "
-     carttask.innerHTML = `
+      carttask.setAttribute("draggable","true")
+      carttask.dataset.id = task.id
+      carttask.innerHTML = `
      <div class="flex justify-between items-center  mb-2">
             <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-gray-100 text-gray-800">${task.id}</span>
             <span class="text-xs font-bold px-2 py-1 rounded bg-yellow-100 text-yellow-800">${task.priority}</span>
@@ -134,11 +139,9 @@ tasks.forEach(task => {
 
    }
 });
+}
 
 
-// function tasksafficherge (){
-
-// }
 
 
 
